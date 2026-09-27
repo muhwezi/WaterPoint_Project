@@ -1,0 +1,711 @@
+/* =========================================================
+   STAFF FAULT MANAGEMENT
+========================================================= */
+
+.faults-page,
+.fault-details-page {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+
+.faults-heading {
+    margin-bottom: 1.5rem;
+}
+
+
+.faults-heading h2,
+.fault-detail-heading h2 {
+    margin:
+        0.25rem
+        0
+        0.5rem;
+    color: #173044;
+    font-size:
+        clamp(
+            1.8rem,
+            4vw,
+            2.5rem
+        );
+}
+
+
+.faults-heading > p:last-child {
+    max-width: 720px;
+    margin-bottom: 0;
+    color: #657581;
+}
+
+
+.faults-eyebrow {
+    margin: 0;
+    color: #087f75;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+   STATUS FILTERS
+========================================================= */
+
+.fault-status-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.35rem;
+}
+
+
+.fault-status-tabs a {
+    flex: 0 0 auto;
+    padding:
+        8px
+        12px;
+    border: 1px solid #d3dfdc;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #506672;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 650;
+}
+
+
+.fault-status-tabs a[
+    aria-current="page"
+] {
+    border-color: #087f75;
+    background: #edf8f6;
+    color: #087f75;
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.fault-filter-card {
+    margin-bottom: 1.6rem;
+    padding: 1rem;
+    border: 1px solid #dde5e4;
+    border-radius: 13px;
+    background: #f8faf9;
+}
+
+
+.fault-filter-form {
+    display: grid;
+    grid-template-columns:
+        minmax(
+            220px,
+            2fr
+        )
+        minmax(
+            150px,
+            1fr
+        )
+        minmax(
+            150px,
+            1fr
+        )
+        auto;
+    gap: 0.9rem;
+    align-items: end;
+}
+
+
+.fault-filter-form label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #173044;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+
+.fault-filter-form input,
+.fault-filter-form select,
+.review-field select,
+.review-field textarea {
+    width: 100%;
+    min-height: 44px;
+    padding:
+        10px
+        12px;
+    border: 1px solid #cbd8d6;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #173044;
+    font: inherit;
+}
+
+
+.review-field textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+
+.fault-filter-form input:focus,
+.fault-filter-form select:focus,
+.review-field select:focus,
+.review-field textarea:focus {
+    outline: none;
+    border-color: #087f75;
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            8,
+            127,
+            117,
+            0.12
+        );
+}
+
+
+.filter-buttons {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+}
+
+
+.filter-buttons button {
+    min-height: 44px;
+    padding:
+        9px
+        16px;
+    border: 0;
+    border-radius: 8px;
+    background: #087f75;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+.filter-buttons a {
+    color: #506672;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.fault-result-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 0.8rem;
+}
+
+
+.fault-result-heading h3,
+.fault-result-heading span {
+    margin: 0;
+}
+
+
+.fault-result-heading span {
+    color: #657581;
+    font-size: 0.88rem;
+}
+
+
+.fault-table-wrapper {
+    overflow-x: auto;
+    border: 1px solid #dde5e4;
+    border-radius: 13px;
+    background: #ffffff;
+}
+
+
+.fault-table {
+    width: 100%;
+    min-width: 1050px;
+    border-collapse: collapse;
+}
+
+
+.fault-table th,
+.fault-table td {
+    padding:
+        0.8rem
+        0.85rem;
+    border-bottom: 1px solid #edf1f0;
+    text-align: left;
+    vertical-align: top;
+}
+
+
+.fault-table th {
+    background: #f7f9f9;
+    color: #506672;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+
+.fault-table td {
+    color: #334e5d;
+    font-size: 0.88rem;
+}
+
+
+.fault-table td small {
+    display: block;
+    margin-top: 0.2rem;
+    color: #78878d;
+}
+
+
+.fault-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+
+.fault-view-link {
+    color: #087f75;
+    font-weight: 750;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.priority-badge,
+.fault-status {
+    display: inline-flex;
+    padding:
+        4px
+        8px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 750;
+}
+
+
+.priority-badge.unassessed {
+    background: #eef1f2;
+    color: #5c686d;
+}
+
+
+.priority-badge.low {
+    background: #e8f5ed;
+    color: #366148;
+}
+
+
+.priority-badge.medium {
+    background: #fff6d9;
+    color: #78600d;
+}
+
+
+.priority-badge.high {
+    background: #fff0db;
+    color: #874f10;
+}
+
+
+.priority-badge.critical {
+    background: #fde7e7;
+    color: #962f2f;
+}
+
+
+.fault-status {
+    background: #edf2f4;
+    color: #415965;
+}
+
+
+.fault-status.reported {
+    background: #e7f0fa;
+    color: #275a86;
+}
+
+
+.fault-status.reviewed {
+    background: #eee9fa;
+    color: #5d438d;
+}
+
+
+.fault-status.in-progress {
+    background: #fff0db;
+    color: #80541b;
+}
+
+
+.fault-status.completed,
+.fault-status.verified,
+.fault-status.closed {
+    background: #e6f5ed;
+    color: #2e6244;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.fault-empty {
+    padding: 2rem;
+    border: 1px dashed #cad8d5;
+    border-radius: 12px;
+    background: #fafcfb;
+    color: #657581;
+    text-align: center;
+}
+
+
+/* =========================================================
+   FAULT DETAIL
+========================================================= */
+
+.fault-back {
+    margin-bottom: 1.3rem;
+}
+
+
+.fault-back a {
+    color: #506672;
+    text-decoration: none;
+}
+
+
+.fault-detail-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 1.3rem;
+}
+
+
+.fault-reference {
+    margin: 0;
+    color: #087f75;
+    font-family: monospace;
+    font-weight: 800;
+}
+
+
+.fault-detail-heading > div:first-child > p:last-child {
+    margin: 0;
+    color: #657581;
+}
+
+
+.fault-current-state {
+    min-width: 210px;
+    display: grid;
+    grid-template-columns:
+        1fr
+        1fr;
+    gap:
+        0.3rem
+        1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: #f1f7f6;
+}
+
+
+.fault-current-state span {
+    color: #657581;
+    font-size: 0.8rem;
+}
+
+
+.fault-current-state strong {
+    text-align: right;
+    color: #173044;
+}
+
+
+.fault-detail-grid {
+    display: grid;
+    grid-template-columns:
+        1.4fr
+        0.8fr;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+
+.fault-information-card,
+.fault-review-card,
+.next-action-card {
+    margin-bottom: 1.2rem;
+    padding: 1.35rem;
+    border: 1px solid #dde5e4;
+    border-radius: 14px;
+    background: #ffffff;
+}
+
+
+.fault-information-card h3,
+.fault-review-card h3,
+.next-action-card h3 {
+    margin-top: 0;
+}
+
+
+.staff-detail-list {
+    margin: 0;
+}
+
+
+.staff-detail-list div {
+    display: grid;
+    grid-template-columns:
+        130px
+        1fr;
+    gap: 1rem;
+    padding:
+        0.65rem
+        0;
+    border-bottom: 1px solid #edf1f0;
+}
+
+
+.staff-detail-list div:last-child {
+    border-bottom: 0;
+}
+
+
+.staff-detail-list dt {
+    color: #657581;
+}
+
+
+.staff-detail-list dd {
+    margin: 0;
+    color: #173044;
+    text-align: right;
+}
+
+
+.description-block {
+    margin-top: 1.2rem;
+}
+
+
+.description-block h4 {
+    margin-bottom: 0.45rem;
+}
+
+
+.description-block p {
+    color: #455e6b;
+}
+
+
+.staff-private-note {
+    color: #7b8589;
+    font-size: 0.84rem;
+}
+
+
+.staff-fault-photo {
+    display: block;
+    max-width: 100%;
+    max-height: 580px;
+    margin-inline: auto;
+    border-radius: 11px;
+    object-fit: contain;
+}
+
+
+#staff-fault-map {
+    width: 100%;
+    height: 390px;
+    border-radius: 11px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   REVIEW
+========================================================= */
+
+.fault-review-card {
+    border-color: #bcd8d3;
+    background: #f8fcfb;
+}
+
+
+.review-field {
+    margin-bottom: 1rem;
+}
+
+
+.review-field label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #173044;
+    font-weight: 700;
+}
+
+
+.review-submit {
+    min-height: 46px;
+    padding:
+        10px
+        18px;
+    border: 0;
+    border-radius: 9px;
+    background: #087f75;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+
+.next-action-card {
+    border-color: #d5c9e8;
+    background: #faf8fd;
+}
+
+
+/* =========================================================
+   FLASH
+========================================================= */
+
+.staff-success,
+.staff-error {
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+    border-radius: 11px;
+}
+
+
+.staff-success {
+    border: 1px solid #bedfcf;
+    background: #edf8f2;
+    color: #326044;
+}
+
+
+.staff-error {
+    border: 1px solid #e2bcbc;
+    background: #fff0f0;
+    color: #842e2e;
+}
+
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+.staff-history {
+    display: grid;
+    gap: 0;
+}
+
+
+.staff-history-item {
+    padding:
+        0.9rem
+        0;
+    border-bottom: 1px solid #edf1f0;
+}
+
+
+.staff-history-item:last-child {
+    border-bottom: 0;
+}
+
+
+.staff-history-item > span {
+    display: block;
+    margin-top: 0.2rem;
+    color: #748389;
+    font-size: 0.82rem;
+}
+
+
+.staff-history-item > p {
+    margin:
+        0.4rem
+        0
+        0;
+    color: #5c7079;
+}
+
+
+.internal-history-note {
+    padding: 0.7rem;
+    border-radius: 8px;
+    background: #f6f8f8;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (
+    max-width: 900px
+) {
+
+    .fault-filter-form {
+        grid-template-columns:
+            1fr
+            1fr;
+    }
+
+
+    .fault-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (
+    max-width: 650px
+) {
+
+    .fault-filter-form {
+        grid-template-columns: 1fr;
+    }
+
+
+    .fault-detail-heading {
+        display: block;
+    }
+
+
+    .fault-current-state {
+        margin-top: 1rem;
+    }
+
+
+    .staff-detail-list div {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+    }
+
+
+    .staff-detail-list dd {
+        text-align: left;
+    }
+
+
+    #staff-fault-map {
+        height: 300px;
+    }
+}

@@ -1,0 +1,926 @@
+/* =========================================================
+   PUBLIC FAULT REPORTING
+========================================================= */
+
+.fault-report-page,
+.tracking-page {
+    max-width: 940px;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+.eyebrow {
+    margin: 0;
+    color: #087f75;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+
+.fault-form-header,
+.tracking-search-header {
+    margin-bottom: 2rem;
+}
+
+
+.fault-form-header h2,
+.tracking-search-header h2 {
+    margin:
+        0.3rem
+        0
+        0.6rem;
+    color: #173044;
+    font-size:
+        clamp(
+            1.8rem,
+            4vw,
+            2.6rem
+        );
+}
+
+
+.fault-form-header > p:last-child,
+.tracking-search-header > p {
+    max-width: 700px;
+    color: #657581;
+}
+
+
+/* =========================================================
+   FORM SECTIONS
+========================================================= */
+
+.fault-report-form {
+    display: grid;
+    gap: 1.4rem;
+}
+
+
+.fault-section {
+    padding: 1.5rem;
+    border: 1px solid #dde5e4;
+    border-radius: 15px;
+    background: #ffffff;
+}
+
+
+.fault-section[hidden] {
+    display: none;
+}
+
+
+.fault-section legend {
+    padding:
+        0
+        0.5rem;
+    color: #173044;
+    font-weight: 800;
+}
+
+
+.section-description {
+    margin:
+        0
+        0
+        1.2rem;
+    color: #657581;
+}
+
+
+/* =========================================================
+   SCOPE SELECTION
+========================================================= */
+
+.scope-options {
+    display: grid;
+    grid-template-columns:
+        1fr
+        1fr;
+    gap: 1rem;
+}
+
+
+.scope-card {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+
+.scope-card input {
+    position: absolute;
+    opacity: 0;
+}
+
+
+.scope-card span {
+    display: block;
+    min-height: 120px;
+    padding: 1.2rem;
+    border: 2px solid #dce5e3;
+    border-radius: 13px;
+    background: #ffffff;
+}
+
+
+.scope-card strong {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: #173044;
+}
+
+
+.scope-card small {
+    color: #657581;
+    line-height: 1.5;
+}
+
+
+.scope-card input:checked + span {
+    border-color: #087f75;
+    background: #edf8f6;
+}
+
+
+.scope-card input:focus-visible + span {
+    outline:
+        3px solid
+        rgba(
+            8,
+            127,
+            117,
+            0.22
+        );
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   FORM FIELDS
+========================================================= */
+
+.field-grid {
+    display: grid;
+    grid-template-columns:
+        1fr
+        1fr;
+    gap: 1rem;
+}
+
+
+.form-field {
+    margin-bottom: 1.15rem;
+}
+
+
+.form-field:last-child {
+    margin-bottom: 0;
+}
+
+
+.form-field label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #173044;
+    font-weight: 700;
+}
+
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd8d6;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #173044;
+    font: inherit;
+}
+
+
+.form-field input,
+.form-field select {
+    min-height: 46px;
+}
+
+
+.form-field textarea {
+    resize: vertical;
+}
+
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: #087f75;
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            8,
+            127,
+            117,
+            0.12
+        );
+}
+
+
+.field-help {
+    margin:
+        0.45rem
+        0
+        0;
+    color: #657581;
+    font-size: 0.86rem;
+}
+
+
+.field-error {
+    margin:
+        0.45rem
+        0
+        0;
+    color: #902f2f;
+    font-size: 0.9rem;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   SELECTED WATER POINT
+========================================================= */
+
+.selected-water-point {
+    padding: 1rem;
+    border: 1px solid #cce2dd;
+    border-radius: 12px;
+    background: #f2faf7;
+}
+
+
+.selected-water-point[hidden] {
+    display: none;
+}
+
+
+.selected-code {
+    margin:
+        0
+        0
+        0.3rem;
+    color: #087f75;
+    font-family: monospace;
+    font-weight: 800;
+}
+
+
+.selected-water-point h3 {
+    margin:
+        0
+        0
+        0.35rem;
+}
+
+
+.selected-village,
+.selected-status {
+    margin:
+        0.2rem
+        0;
+    color: #657581;
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+#fault-map {
+    width: 100%;
+    height: 380px;
+    margin-top: 1rem;
+    border: 1px solid #d6dfde;
+    border-radius: 13px;
+    overflow: hidden;
+    background: #edf3f2;
+    z-index: 1;
+}
+
+
+.live-status {
+    min-height: 1.3rem;
+    color: #657581;
+    font-size: 0.88rem;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primary-public-button,
+.secondary-public-button,
+.submit-fault-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 45px;
+    padding:
+        10px
+        17px;
+    border-radius: 9px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.primary-public-button,
+.submit-fault-button {
+    border: 1px solid #087f75;
+    background: #087f75;
+    color: #ffffff;
+}
+
+
+.secondary-public-button {
+    border: 1px solid #bdccc9;
+    background: #ffffff;
+    color: #173044;
+}
+
+
+.primary-public-button:hover,
+.submit-fault-button:hover {
+    filter: brightness(0.94);
+}
+
+
+.secondary-public-button:hover {
+    background: #f3f7f6;
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.photo-source-actions,
+.camera-actions,
+.success-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+
+.photo-picker-label {
+    cursor: pointer;
+}
+
+
+.hidden-photo-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(
+        0,
+        0,
+        0,
+        0
+    );
+}
+
+
+.camera-panel {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #dbe5e3;
+    border-radius: 13px;
+    background: #f6faf9;
+}
+
+
+.camera-panel[hidden] {
+    display: none;
+}
+
+
+#camera-stream {
+    display: block;
+    width: 100%;
+    max-height: 520px;
+    border-radius: 10px;
+    background: #111;
+    object-fit: contain;
+}
+
+
+.camera-actions {
+    margin-top: 0.8rem;
+}
+
+
+.fault-photo-preview {
+    margin-top: 1rem;
+}
+
+
+.fault-photo-preview[hidden] {
+    display: none;
+}
+
+
+.fault-photo-preview img {
+    display: block;
+    width: 100%;
+    max-height: 460px;
+    margin-bottom: 0.75rem;
+    border-radius: 11px;
+    object-fit: contain;
+    background: #edf3f2;
+}
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+.fault-submit-area {
+    padding: 1.4rem;
+    border-radius: 14px;
+    background: #f1f7f6;
+    text-align: right;
+}
+
+
+.fault-submit-area p {
+    margin:
+        0
+        0
+        1rem;
+    color: #657581;
+}
+
+
+.submit-fault-button {
+    min-width: 230px;
+}
+
+
+/* =========================================================
+   ERRORS
+========================================================= */
+
+.fault-error-summary {
+    margin-bottom: 1.4rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid #e4bbbb;
+    border-radius: 12px;
+    background: #fff0f0;
+    color: #812d2d;
+}
+
+
+.fault-error-summary h3 {
+    margin-top: 0;
+}
+
+
+.fault-error-summary a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.fault-success-card {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #cbe2da;
+    border-radius: 17px;
+    background: #ffffff;
+    text-align: center;
+}
+
+
+.success-symbol {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin:
+        0 auto
+        1rem;
+    border-radius: 50%;
+    background: #e6f5ed;
+    color: #087f75;
+    font-size: 1.6rem;
+    font-weight: 900;
+}
+
+
+.fault-success-card h2 {
+    margin:
+        0.3rem
+        0
+        0.6rem;
+}
+
+
+.tracking-reference-box {
+    margin:
+        1.6rem
+        0;
+    padding: 1.2rem;
+    border-radius: 12px;
+    background: #102837;
+    color: #ffffff;
+}
+
+
+.tracking-reference-box span {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.82rem;
+}
+
+
+.tracking-reference-box strong {
+    display: block;
+    font-family: monospace;
+    font-size:
+        clamp(
+            1.4rem,
+            5vw,
+            2rem
+        );
+    letter-spacing: 0.05em;
+}
+
+
+.success-details {
+    margin:
+        0
+        0
+        1.5rem;
+    text-align: left;
+}
+
+
+.success-details div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding:
+        0.65rem
+        0;
+    border-bottom: 1px solid #e7eceb;
+}
+
+
+.success-details dt {
+    color: #657581;
+}
+
+
+.success-details dd {
+    margin: 0;
+    text-align: right;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   TRACKING SEARCH
+========================================================= */
+
+.tracking-search-form {
+    max-width: 680px;
+    margin-top: 1.4rem;
+}
+
+
+.tracking-search-form label {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-weight: 700;
+}
+
+
+.tracking-search-row {
+    display: grid;
+    grid-template-columns:
+        1fr
+        auto;
+    gap: 0.7rem;
+}
+
+
+.tracking-search-row input {
+    min-height: 48px;
+    padding: 11px 13px;
+    border: 1px solid #cbd8d6;
+    border-radius: 9px;
+    font: inherit;
+    text-transform: uppercase;
+}
+
+
+.tracking-search-row button {
+    padding:
+        10px
+        18px;
+    border: 0;
+    border-radius: 9px;
+    background: #087f75;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   TRACKING RESULT
+========================================================= */
+
+.tracking-result {
+    display: grid;
+    gap: 1.2rem;
+}
+
+
+.tracking-result-top,
+.turnaround-card,
+.tracking-timeline-card,
+.tracking-privacy-note,
+.tracking-not-found {
+    padding: 1.4rem;
+    border: 1px solid #dde5e4;
+    border-radius: 14px;
+    background: #ffffff;
+}
+
+
+.tracking-result-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 2rem;
+}
+
+
+.tracking-reference {
+    margin:
+        0
+        0
+        0.4rem;
+    color: #087f75;
+    font-family: monospace;
+    font-weight: 800;
+}
+
+
+.tracking-result-top h3 {
+    margin:
+        0
+        0
+        0.3rem;
+}
+
+
+.tracking-location,
+.tracking-water-point {
+    margin:
+        0.3rem
+        0;
+    color: #657581;
+}
+
+
+.tracking-status-box {
+    min-width: 190px;
+    padding: 1rem;
+    border-radius: 11px;
+    background: #edf8f6;
+}
+
+
+.tracking-status-box span,
+.turnaround-card span {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #657581;
+    font-size: 0.82rem;
+}
+
+
+.tracking-status-box strong {
+    color: #087f75;
+}
+
+
+.turnaround-card strong {
+    display: block;
+    color: #173044;
+    font-size: 1.35rem;
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.tracking-timeline-card h3 {
+    margin-top: 0;
+}
+
+
+.tracking-timeline {
+    position: relative;
+}
+
+
+.timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns:
+        36px
+        1fr;
+    gap: 0.8rem;
+    padding-bottom: 1.3rem;
+}
+
+
+.timeline-item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 30px;
+    bottom: 0;
+    width: 2px;
+    background: #cfe3df;
+}
+
+
+.timeline-marker {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #087f75;
+    color: #ffffff;
+    font-weight: 800;
+}
+
+
+.timeline-content h4 {
+    margin:
+        0
+        0
+        0.25rem;
+}
+
+
+.timeline-content time {
+    color: #657581;
+    font-size: 0.84rem;
+}
+
+
+.timeline-content p {
+    margin:
+        0.35rem
+        0
+        0;
+    color: #506672;
+}
+
+
+.tracking-privacy-note {
+    color: #657581;
+    font-size: 0.9rem;
+}
+
+
+.tracking-not-found {
+    border-color: #e1cccc;
+    background: #fff8f8;
+}
+
+
+.tracking-not-found h3 {
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (
+    max-width: 700px
+) {
+
+    .scope-options,
+    .field-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tracking-search-row {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tracking-search-row button {
+        min-height: 48px;
+    }
+
+
+    .tracking-result-top {
+        display: block;
+    }
+
+
+    .tracking-status-box {
+        margin-top: 1rem;
+        min-width: 0;
+    }
+
+
+    #fault-map {
+        height: 300px;
+    }
+
+
+    .fault-submit-area {
+        text-align: left;
+    }
+
+
+    .submit-fault-button {
+        width: 100%;
+    }
+
+
+    .success-actions {
+        display: grid;
+    }
+
+
+    .success-actions a {
+        width: 100%;
+    }
+
+}
+
+
+@media (
+    max-width: 460px
+) {
+
+    .fault-section {
+        padding: 1.1rem;
+    }
+
+
+    .photo-source-actions,
+    .camera-actions {
+        display: grid;
+    }
+
+
+    .photo-source-actions > *,
+    .camera-actions > * {
+        width: 100%;
+    }
+
+
+    .success-details div {
+        display: block;
+    }
+
+
+    .success-details dd {
+        margin-top: 0.2rem;
+        text-align: left;
+    }
+
+}
